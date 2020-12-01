@@ -1,0 +1,5 @@
+python3 -m venv $HOME/tmp/deepspeechCommander-venv/
+
+source $HOME/tmp/deepspeechCommander-venv/bin/activate
+
+deactivate
