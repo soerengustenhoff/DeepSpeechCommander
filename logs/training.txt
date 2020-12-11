@@ -1,0 +1,235 @@
+~/DeepSpeechCommander/src/scripts/run_training_voxforge.sh 
+I Loading best validating checkpoint from /home/necro/DeepSpeechCommander/checkpoints/best_dev-1721691
+I Loading variable from checkpoint: beta1_power
+I Loading variable from checkpoint: beta2_power
+I Loading variable from checkpoint: cudnn_lstm/opaque_kernel
+I Loading variable from checkpoint: cudnn_lstm/opaque_kernel/Adam
+I Loading variable from checkpoint: cudnn_lstm/opaque_kernel/Adam_1
+I Loading variable from checkpoint: global_step
+I Loading variable from checkpoint: layer_1/bias
+I Loading variable from checkpoint: layer_1/bias/Adam
+I Loading variable from checkpoint: layer_1/bias/Adam_1
+I Loading variable from checkpoint: layer_1/weights
+I Loading variable from checkpoint: layer_1/weights/Adam
+I Loading variable from checkpoint: layer_1/weights/Adam_1
+I Loading variable from checkpoint: layer_2/bias
+I Loading variable from checkpoint: layer_2/bias/Adam
+I Loading variable from checkpoint: layer_2/bias/Adam_1
+I Loading variable from checkpoint: layer_2/weights
+I Loading variable from checkpoint: layer_2/weights/Adam
+I Loading variable from checkpoint: layer_2/weights/Adam_1
+I Loading variable from checkpoint: layer_3/bias
+I Loading variable from checkpoint: layer_3/bias/Adam
+I Loading variable from checkpoint: layer_3/bias/Adam_1
+I Loading variable from checkpoint: layer_3/weights
+I Loading variable from checkpoint: layer_3/weights/Adam
+I Loading variable from checkpoint: layer_3/weights/Adam_1
+I Loading variable from checkpoint: layer_5/bias
+I Loading variable from checkpoint: layer_5/bias/Adam
+I Loading variable from checkpoint: layer_5/bias/Adam_1
+I Loading variable from checkpoint: layer_5/weights
+I Loading variable from checkpoint: layer_5/weights/Adam
+I Loading variable from checkpoint: layer_5/weights/Adam_1
+I Loading variable from checkpoint: layer_6/bias
+I Loading variable from checkpoint: layer_6/bias/Adam
+I Loading variable from checkpoint: layer_6/bias/Adam_1
+I Loading variable from checkpoint: layer_6/weights
+I Loading variable from checkpoint: layer_6/weights/Adam
+I Loading variable from checkpoint: layer_6/weights/Adam_1
+I Loading variable from checkpoint: learning_rate
+I STARTING Optimization
+Epoch 0 |   Training | Elapsed Time: 0:45:15 | Steps: 3533 | Loss: 6.246435                                                                                                                                
+Epoch 0 | Validation | Elapsed Time: 0:00:11 | Steps: 31 | Loss: 12.449680 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+I Saved new best validating model with loss 12.449680 to: /home/necro/DeepSpeechCommander/checkpoints/best_dev-1725224
+--------------------------------------------------------------------------------
+Epoch 1 |   Training | Elapsed Time: 0:45:14 | Steps: 3533 | Loss: 6.101167                                                                                                                                
+Epoch 1 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.503067 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+--------------------------------------------------------------------------------
+Epoch 2 |   Training | Elapsed Time: 0:45:49 | Steps: 3533 | Loss: 5.960614                                                                                                                                
+Epoch 2 | Validation | Elapsed Time: 0:00:14 | Steps: 31 | Loss: 12.494342 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+--------------------------------------------------------------------------------
+Epoch 3 |   Training | Elapsed Time: 0:45:54 | Steps: 3533 | Loss: 5.881985                                                                                                                                
+Epoch 3 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.539122 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+--------------------------------------------------------------------------------
+Epoch 4 |   Training | Elapsed Time: 0:45:20 | Steps: 3533 | Loss: 5.764490                                                                                                                                
+Epoch 4 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.504865 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+--------------------------------------------------------------------------------
+Epoch 5 |   Training | Elapsed Time: 0:46:25 | Steps: 3533 | Loss: 5.633346                                                                                                                                
+Epoch 5 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.388680 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+I Saved new best validating model with loss 12.388680 to: /home/necro/DeepSpeechCommander/checkpoints/best_dev-1742889
+--------------------------------------------------------------------------------
+Epoch 6 |   Training | Elapsed Time: 0:45:17 | Steps: 3533 | Loss: 5.515039                                                                                                                                
+Epoch 6 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.454666 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+--------------------------------------------------------------------------------
+Epoch 7 |   Training | Elapsed Time: 0:45:27 | Steps: 3533 | Loss: 5.459937                                                                                                                                
+Epoch 7 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.384200 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+I Saved new best validating model with loss 12.384200 to: /home/necro/DeepSpeechCommander/checkpoints/best_dev-1749955
+--------------------------------------------------------------------------------
+Epoch 8 |   Training | Elapsed Time: 0:45:14 | Steps: 3533 | Loss: 5.342870                                                                                                                                
+Epoch 8 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.352044 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+I Saved new best validating model with loss 12.352044 to: /home/necro/DeepSpeechCommander/checkpoints/best_dev-1753488
+--------------------------------------------------------------------------------
+Epoch 9 |   Training | Elapsed Time: 0:45:25 | Steps: 3533 | Loss: 5.224656                                                                                                                                
+Epoch 9 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.413482 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+--------------------------------------------------------------------------------
+Epoch 10 |   Training | Elapsed Time: 0:45:13 | Steps: 3533 | Loss: 5.122120                                                                                                                               
+Epoch 10 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.462130 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 11 |   Training | Elapsed Time: 0:45:21 | Steps: 3533 | Loss: 5.031021                                                                                                                               
+Epoch 11 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.435636 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 12 |   Training | Elapsed Time: 0:45:13 | Steps: 3533 | Loss: 4.921339                                                                                                                               
+Epoch 12 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.426933 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 13 |   Training | Elapsed Time: 0:45:11 | Steps: 3533 | Loss: 4.823688                                                                                                                               
+Epoch 13 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.439015 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 14 |   Training | Elapsed Time: 0:45:39 | Steps: 3533 | Loss: 4.728780                                                                                                                               
+Epoch 14 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.400388 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 15 |   Training | Elapsed Time: 0:45:13 | Steps: 3533 | Loss: 4.633415                                                                                                                               
+Epoch 15 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.500473 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 16 |   Training | Elapsed Time: 0:45:12 | Steps: 3533 | Loss: 4.548644                                                                                                                               
+Epoch 16 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.510419 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 17 |   Training | Elapsed Time: 0:45:23 | Steps: 3533 | Loss: 4.455054                                                                                                                               
+Epoch 17 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.442656 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 18 |   Training | Elapsed Time: 0:45:11 | Steps: 3533 | Loss: 4.376017                                                                                                                               
+Epoch 18 | Validation | Elapsed Time: 0:00:11 | Steps: 31 | Loss: 12.477039 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 19 |   Training | Elapsed Time: 0:45:13 | Steps: 3533 | Loss: 4.297912                                                                                                                               
+Epoch 19 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.589261 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 20 |   Training | Elapsed Time: 0:45:11 | Steps: 3533 | Loss: 4.208928                                                                                                                               
+Epoch 20 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.594424 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 21 |   Training | Elapsed Time: 0:45:32 | Steps: 3533 | Loss: 4.131356                                                                                                                               
+Epoch 21 | Validation | Elapsed Time: 0:00:18 | Steps: 31 | Loss: 12.586351 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 22 |   Training | Elapsed Time: 0:45:25 | Steps: 3533 | Loss: 4.052896                                                                                                                               
+Epoch 22 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.744276 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 23 |   Training | Elapsed Time: 0:45:12 | Steps: 3533 | Loss: 3.965152                                                                                                                               
+Epoch 23 | Validation | Elapsed Time: 0:00:13 | Steps: 31 | Loss: 12.780307 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 24 |   Training | Elapsed Time: 0:45:18 | Steps: 3533 | Loss: 3.885732                                                                                                                               
+Epoch 24 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.658373 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 25 |   Training | Elapsed Time: 0:45:10 | Steps: 3533 | Loss: 3.805929                                                                                                                               
+Epoch 25 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.771149 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 26 |   Training | Elapsed Time: 0:45:06 | Steps: 3533 | Loss: 3.744034                                                                                                                               
+Epoch 26 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.853466 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 27 |   Training | Elapsed Time: 0:45:12 | Steps: 3533 | Loss: 3.702773                                                                                                                               
+Epoch 27 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.855645 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 28 |   Training | Elapsed Time: 0:45:26 | Steps: 3533 | Loss: 3.613325                                                                                                                               
+Epoch 28 | Validation | Elapsed Time: 0:00:13 | Steps: 31 | Loss: 13.021269 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+Epoch 29 |   Training | Elapsed Time: 0:45:16 | Steps: 3533 | Loss: 3.547519                                                                                                                               
+Epoch 29 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 13.141317 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                      
+--------------------------------------------------------------------------------
+I FINISHED optimization in 22:47:12.286853
+I Loading best validating checkpoint from /home/necro/DeepSpeechCommander/checkpoints/best_dev-1753488
+I Loading variable from checkpoint: cudnn_lstm/rnn/multi_rnn_cell/cell_0/cudnn_compatible_lstm_cell/bias
+I Loading variable from checkpoint: cudnn_lstm/rnn/multi_rnn_cell/cell_0/cudnn_compatible_lstm_cell/kernel
+I Loading variable from checkpoint: global_step
+I Loading variable from checkpoint: layer_1/bias
+I Loading variable from checkpoint: layer_1/weights
+I Loading variable from checkpoint: layer_2/bias
+I Loading variable from checkpoint: layer_2/weights
+I Loading variable from checkpoint: layer_3/bias
+I Loading variable from checkpoint: layer_3/weights
+I Loading variable from checkpoint: layer_5/bias
+I Loading variable from checkpoint: layer_5/weights
+I Loading variable from checkpoint: layer_6/bias
+I Loading variable from checkpoint: layer_6/weights
+Testing model on /home/necro/datasets/voxforge/voxforge-test.csv
+Test epoch | Steps: 28 | Elapsed Time: 0:00:56                                                                                                                                                             
+Test on /home/necro/datasets/voxforge/voxforge-test.csv - WER: 0.114730, CER: 0.063737, loss: 14.444828
+--------------------------------------------------------------------------------
+Best WER: 
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 27.424107
+ - wav: file:///home/necro/datasets/voxforge/test/ttm-20071007/wav/sow0016.wav
+ - src: "see thy fellow workmen there in god's eternity surviving there"
+ - res: "see thy fellow workmen there in god's eternity surviving there"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 21.156610
+ - wav: file:///home/necro/datasets/voxforge/test/ttm-20071007/wav/sow0009.wav
+ - src: "all spoken epics all acted heroism martyrdoms up to that"
+ - res: "all spoken epics all acted heroism martyrdoms up to that"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 20.369108
+ - wav: file:///home/necro/datasets/voxforge/test/Vladimir-20150717-vai/wav/b0462.wav
+ - src: "one guess will do ernest retorted"
+ - res: "one guess will do ernest retorted"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 19.081964
+ - wav: file:///home/necro/datasets/voxforge/test/bonzer-20090919-zyn/wav/a0502.wav
+ - src: "anything unusual or abnormal was sufficient to send a fellow to molokai"
+ - res: "anything unusual or abnormal was sufficient to send a fellow to molokai"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 18.303923
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20111230-ggt/wav/a0503.wav
+ - src: "his beady black eyes saw bargains where other men saw bankruptcy"
+ - res: "his beady black eyes saw bargains where other men saw bankruptcy"
+--------------------------------------------------------------------------------
+Median WER: 
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 0.183387
+ - wav: file:///home/necro/datasets/voxforge/test/d2-20111215-mlb/wav/a0127.wav
+ - src: "it was a temptation but he resisted it"
+ - res: "it was a temptation but he resisted it"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 0.182225
+ - wav: file:///home/necro/datasets/voxforge/test/jade-20100109-how/wav/a0038.wav
+ - src: "we'll have to watch our chances"
+ - res: "we'll have to watch our chances"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 0.180797
+ - wav: file:///home/necro/datasets/voxforge/test/jfd3220-20120322-fqc/wav/rb-19.wav
+ - src: "that means that when a programmer wants to write speech recognition software"
+ - res: "that means that when a programmer wants to write speech recognition software"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 0.177661
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20121113-miv/wav/a0165.wav
+ - src: "they are to attack your camp tomorrow night"
+ - res: "they are to attack your camp tomorrow night"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 0.177253
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20131111-ygj/wav/b0084.wav
+ - src: "your face is red with blood"
+ - res: "your face is red with blood"
+--------------------------------------------------------------------------------
+Worst WER: 
+--------------------------------------------------------------------------------
+WER: 0.909091, CER: 0.700000, loss: 149.690872
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20150417-qko/wav/a0543.wav
+ - src: "i had been born with no organic chemical predisposition toward alcohol"
+ - res: "he gobernacion or alcohol"
+--------------------------------------------------------------------------------
+WER: 1.000000, CER: 0.777778, loss: 95.363091
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20150417-qko/wav/a0551.wav
+ - src: "all an appearance can know is mirage"
+ - res: "on her head a"
+--------------------------------------------------------------------------------
+WER: 1.000000, CER: 0.777778, loss: 87.917610
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20150417-qko/wav/a0547.wav
+ - src: "men like joe goose dated existence from drunk to drunk"
+ - res: "meditated assisted"
+--------------------------------------------------------------------------------
+WER: 1.000000, CER: 0.638889, loss: 85.566849
+ - wav: file:///home/necro/datasets/voxforge/test/Jennichan-20130921-vhe/wav/a0541.wav
+ - src: "the warden with a quart of champagne"
+ - res: "a wagon of without quite option pain"
+--------------------------------------------------------------------------------
+WER: 1.000000, CER: 0.558140, loss: 65.947266
+ - wav: file:///home/necro/datasets/voxforge/test/xh-20100802-qsv/wav/a0592.wav
+ - src: "it's only his indigestion i find fault with"
+ - res: "it is in the destiny of a forwith"
+--------------------------------------------------------------------------------
+
