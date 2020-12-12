@@ -1,0 +1,317 @@
+       USAGE: DeepSpeech.py [flags]
+flags:
+
+absl.app:
+  -?,--[no]help: show this help
+    (default: 'false')
+  --[no]helpfull: show full help
+    (default: 'false')
+  --[no]helpshort: show this help
+    (default: 'false')
+  --[no]helpxml: like --helpfull, but generates XML output
+    (default: 'false')
+  --[no]only_check_args: Set to true to validate args and exit.
+    (default: 'false')
+  --[no]pdb: Alias for --pdb_post_mortem.
+    (default: 'false')
+  --[no]pdb_post_mortem: Set to true to handle uncaught exceptions with PDB post mortem.
+    (default: 'false')
+  --profile_file: Dump profile information to a file (for python -m pstats). Implies --run_with_profiling.
+  --[no]run_with_pdb: Set to true for PDB debug mode
+    (default: 'false')
+  --[no]run_with_profiling: Set to true for profiling the script. Execution will be slower, and the output format might change over time.
+    (default: 'false')
+  --[no]use_cprofile_for_profiling: Use cProfile instead of the profile module for profiling. This has no effect unless --run_with_profiling is set.
+    (default: 'true')
+
+absl.logging:
+  --[no]alsologtostderr: also log to stderr?
+    (default: 'false')
+  --log_dir: directory to write logfiles into
+    (default: '')
+  --logger_levels: Specify log level of loggers. The format is a CSV list of `name:level`. Where `name` is the logger name used with `logging.getLogger()`, and `level` is a level name  (INFO, DEBUG, etc).
+    e.g. `myapp.foo:INFO,other.logger:DEBUG`
+    (default: '')
+  --[no]logtostderr: Should only log to stderr?
+    (default: 'false')
+  --[no]showprefixforinfo: If False, do not prepend prefix to info messages when it's logged to stderr, --verbosity is set to INFO level, and python logging is used.
+    (default: 'true')
+  --stderrthreshold: log messages at this level, or more severe, to stderr in addition to the logfile.  Possible values are 'debug', 'info', 'warning', 'error', and 'fatal'.  Obsoletes --alsologtostderr.
+    Using --alsologtostderr cancels the effect of this flag. Please also note that this flag is subject to --verbosity and requires logfile not be stderr.
+    (default: 'fatal')
+  -v,--verbosity: Logging verbosity level. Messages logged at this level or lower will be included. Set to 1 for debug logging. If the flag was not set or supplied, the value will be changed from the
+    default of -1 (warning) to 0 (info) after flags are parsed.
+    (default: '-1')
+    (an integer)
+
+absl.testing.absltest:
+  --test_random_seed: Random seed for testing. Some test frameworks may change the default value of this flag between runs, so it is not appropriate for seeding probabilistic tests.
+    (default: '301')
+    (an integer)
+  --test_randomize_ordering_seed: If positive, use this as a seed to randomize the execution order for test cases. If "random", pick a random seed to use. If 0 or not set, do not randomize test case
+    execution order. This flag also overrides the TEST_RANDOMIZE_ORDERING_SEED environment variable.
+    (default: '')
+  --test_srcdir: Root of directory tree where source files live
+    (default: '')
+  --test_tmpdir: Directory for temporary testing files
+    (default: '/tmp/absl_testing')
+  --xml_output_file: File to store XML test results
+    (default: '')
+
+deepspeech_training.util.flags:
+  --alphabet_config_path: path to the configuration file specifying the alphabet used by the network. See the comment in data/alphabet.txt for a description of the format.
+    (default: 'data/alphabet.txt')
+  --audio_sample_rate: sample rate value expected by model
+    (default: '16000')
+    (an integer)
+  --augment: specifies an augmentation of the training samples. Format is "--augment operation[param1=value1, ...]";
+    repeat this option to specify a list of values
+  --[no]automatic_mixed_precision: whether to allow automatic mixed precision training. USE OF THIS FLAG IS UNSUPPORTED. Checkpoints created with automatic mixed precision training will not be usable
+    without mixed precision.
+    (default: 'false')
+  --beam_width: beam width used in the CTC decoder when building candidate transcriptions
+    (default: '1024')
+    (an integer)
+  --beta1: beta 1 parameter of Adam optimizer
+    (default: '0.9')
+    (a number)
+  --beta2: beta 2 parameter of Adam optimizer
+    (default: '0.999')
+    (a number)
+  --[no]bytes_output_mode: enable Bytes Output Mode mode. When this is used the model outputs UTF-8 byte values directly rather than using an alphabet mapping. The --alphabet_config_path option will be
+    ignored. See the training documentation for more details.
+    (default: 'false')
+  --cache_for_epochs: after how many epochs the feature cache is invalidated again - 0 for "never"
+    (default: '0')
+    (an integer)
+  --checkpoint_dir: directory from which checkpoints are loaded and to which they are saved - defaults to directory "deepspeech/checkpoints" within user's data home specified by the XDG Base Directory
+    Specification
+    (default: '')
+  --checkpoint_secs: checkpoint saving interval in seconds
+    (default: '600')
+    (an integer)
+  --cutoff_prob: only consider characters until this probability mass is reached. 1.0 = disabled.
+    (default: '1.0')
+    (a number)
+  --cutoff_top_n: only process this number of characters sorted by probability mass for each time step. If bigger than alphabet size, disabled.
+    (default: '300')
+    (an integer)
+  --dev_batch_size: number of elements in a validation batch
+    (default: '1')
+    (an integer)
+  --dev_files: comma separated list of files specifying the datasets used for validation. Multiple files will get reported separately. If empty, validation will not be run.
+    (default: '')
+  --drop_source_layers: single integer for how many layers to drop from source model (to drop just output == 1, drop penultimate and output ==2, etc)
+    (default: '0')
+    (an integer)
+  --dropout_rate: dropout rate for feedforward layers
+    (default: '0.05')
+    (a number)
+  --dropout_rate2: dropout rate for layer 2 - defaults to dropout_rate
+    (default: '-1.0')
+    (a number)
+  --dropout_rate3: dropout rate for layer 3 - defaults to dropout_rate
+    (default: '-1.0')
+    (a number)
+  --dropout_rate4: dropout rate for layer 4 - defaults to 0.0
+    (default: '0.0')
+    (a number)
+  --dropout_rate5: dropout rate for layer 5 - defaults to 0.0
+    (default: '0.0')
+    (a number)
+  --dropout_rate6: dropout rate for layer 6 - defaults to dropout_rate
+    (default: '-1.0')
+    (a number)
+  --[no]early_stop: Enable early stopping mechanism over validation dataset. If validation is not being run, early stopping is disabled.
+    (default: 'false')
+  --epochs: how many epochs (complete runs through the train files) to train for
+    (default: '75')
+    (an integer)
+  --epsilon: epsilon parameter of Adam optimizer
+    (default: '1e-08')
+    (a number)
+  --es_epochs: Number of epochs with no improvement after which training will be stopped. Loss is not stored in the checkpoint so when checkpoint is revived it starts the loss calculation from start at
+    that point
+    (default: '25')
+    (an integer)
+  --es_min_delta: Minimum change in loss to qualify as an improvement. This value will also be used in Reduce learning rate on plateau
+    (default: '0.05')
+    (a number)
+  --export_author_id: author of the exported model. GitHub user or organization name used to uniquely identify the author of this model
+    (default: 'author')
+  --export_batch_size: number of elements per batch on the exported graph
+    (default: '1')
+    (an integer)
+  --export_beam_width: default beam width to embed into exported graph
+    (default: '500')
+    (an integer)
+  --export_contact_info: public contact information of the author. Can be an email address, or a link to a contact form, issue tracker, or discussion forum. Must provide a way to reach the model authors
+    (default: '<public contact information of the author. Can be an email address, or a link to a contact form, issue tracker, or discussion forum. Must provide a way to reach the model authors>')
+  --export_description: Freeform description of the model being exported. Markdown accepted. You can also leave this flag unchanged and edit the generated .md file directly. Useful things to describe are
+    demographic and acoustic characteristics of the data used to train the model, any architectural changes, names of public datasets that were used when applicable, hyperparameters used for training,
+    evaluation results on standard benchmark datasets, etc.
+    (default: '<Freeform description of the model being exported. Markdown accepted. You can also leave this flag unchanged and edit the generated .md file directly. Useful things to describe are
+    demographic and acoustic characteristics of the data used to train the model, any architectural changes, names of public datasets that were used when applicable, hyperparameters used for training,
+    evaluation results on standard benchmark datasets, etc.>')
+  --export_dir: directory in which exported models are stored - if omitted, the model won't get exported
+    (default: '')
+  --export_file_name: name for the exported model file name
+    (default: 'output_graph')
+  --export_language: language the model was trained on - IETF BCP 47 language tag including at least language, script and region subtags. E.g. "en-Latn-UK" or "de-Latn-DE" or "cmn-Hans-CN". Include as
+    much info as you can without loss of precision. For example, if a model is trained on Scottish English, include the variant subtag: "en-Latn-GB-Scotland".
+    (default: '<language the model was trained on - IETF BCP 47 language tag including at least language, script and region subtags. E.g. "en-Latn-UK" or "de-Latn-DE" or "cmn-Hans-CN". Include as much
+    info as you can without loss of precision. For example, if a model is trained on Scottish English, include the variant subtag: "en-Latn-GB-Scotland".>')
+  --export_license: SPDX identifier of the license of the exported model. See https://spdx.org/licenses/. If the license does not have an SPDX identifier, use the license name.
+    (default: '<SPDX identifier of the license of the exported model. See https://spdx.org/licenses/. If the license does not have an SPDX identifier, use the license name.>')
+  --export_max_ds_version: maximum DeepSpeech version (inclusive) the exported model is compatible with
+    (default: '<maximum DeepSpeech version (inclusive) the exported model is compatible with>')
+  --export_min_ds_version: minimum DeepSpeech version (inclusive) the exported model is compatible with
+    (default: '<minimum DeepSpeech version (inclusive) the exported model is compatible with>')
+  --export_model_name: name of the exported model. Must not contain forward slashes.
+    (default: 'model')
+  --export_model_version: semantic version of the exported model. See https://semver.org/. This is fully controlled by you as author of the model and has no required connection with DeepSpeech versions
+    (default: '0.0.1')
+  --[no]export_tflite: export a graph ready for TF Lite engine
+    (default: 'false')
+  --[no]export_zip: export a TFLite model and package with LM and info.json
+    (default: 'false')
+  --feature_cache: cache MFCC features to disk to speed up future training runs on the same data. This flag specifies the path where cached features extracted from --train_files will be saved. If empty,
+    or if online augmentation flags are enabled, caching will be disabled.
+    (default: '')
+  --feature_win_len: feature extraction audio window length in milliseconds
+    (default: '32')
+    (an integer)
+  --feature_win_step: feature extraction window step length in milliseconds
+    (default: '20')
+    (an integer)
+  --[no]force_initialize_learning_rate: Force re-initialization of learning rate which was previously reduced.
+    (default: 'false')
+  --inter_op_parallelism_threads: number of inter-op parallelism threads - see tf.ConfigProto for more details. USE OF THIS FLAG IS UNSUPPORTED
+    (default: '0')
+    (an integer)
+  --intra_op_parallelism_threads: number of intra-op parallelism threads - see tf.ConfigProto for more details. USE OF THIS FLAG IS UNSUPPORTED
+    (default: '0')
+    (an integer)
+  --[no]layer_norm: wether to use layer-normalization after each fully-connected layer (except the last one)
+    (default: 'false')
+  --learning_rate: learning rate of Adam optimizer
+    (default: '0.001')
+    (a number)
+  --limit_dev: maximum number of elements to use from validation set - 0 means no limit
+    (default: '0')
+    (an integer)
+  --limit_test: maximum number of elements to use from test set - 0 means no limit
+    (default: '0')
+    (an integer)
+  --limit_train: maximum number of elements to use from train set - 0 means no limit
+    (default: '0')
+    (an integer)
+  --lm_alpha: the alpha hyperparameter of the CTC decoder. Language Model weight.
+    (default: '0.931289039105002')
+    (a number)
+  --lm_alpha_max: the maximum of the alpha hyperparameter of the CTC decoder explored during hyperparameter optimization. Language Model weight.
+    (default: '5.0')
+    (a number)
+  --lm_beta: the beta hyperparameter of the CTC decoder. Word insertion weight.
+    (default: '1.1834137581510284')
+    (a number)
+  --lm_beta_max: the maximum beta hyperparameter of the CTC decoder explored during hyperparameter optimization. Word insertion weight.
+    (default: '5.0')
+    (a number)
+  --load_checkpoint_dir: directory in which checkpoints are stored - defaults to directory "deepspeech/checkpoints" within user's data home specified by the XDG Base Directory Specification
+    (default: '')
+  --[no]load_cudnn: Specifying this flag allows one to convert a CuDNN RNN checkpoint to a checkpoint capable of running on a CPU graph.
+    (default: 'false')
+  --load_evaluate: what checkpoint to load for evaluation tasks (test epochs, model export, single file inference, etc). "last" for loading most recent epoch checkpoint, "best" for loading best validation
+    loss checkpoint, "auto" for trying several options.
+    (default: 'auto')
+  --load_train: what checkpoint to load before starting the training process. "last" for loading most recent epoch checkpoint, "best" for loading best validation loss checkpoint, "init" for initializing a
+    new checkpoint, "auto" for trying several options.
+    (default: 'auto')
+  --log_level: log level for console logs - 0: DEBUG, 1: INFO, 2: WARN, 3: ERROR
+    (default: '1')
+    (an integer)
+  --[no]log_placement: whether to log device placement of the operators to the console
+    (default: 'false')
+  --max_to_keep: number of checkpoint files to keep - default value is 5
+    (default: '5')
+    (an integer)
+  --metrics_files: comma separated list of files specifying the datasets used for tracking of metrics (after validation step). Currently the only metric is the CTC loss but without affecting the tracking
+    of best validation loss. Multiple files will get reported separately. If empty, metrics will not be computed.
+    (default: '')
+  --n_hidden: layer width to use when initialising layers
+    (default: '2048')
+    (an integer)
+  --n_steps: how many timesteps to process at once by the export graph, higher values mean more latency
+    (default: '16')
+    (an integer)
+  --n_trials: the number of trials to run during hyperparameter optimization.
+    (default: '2400')
+    (an integer)
+  --one_shot_infer: one-shot inference mode: specify a wav file and the script will load the checkpoint and perform inference on it.
+    (default: '')
+  --plateau_epochs: Number of epochs to consider for RLROP. Has to be smaller than es_epochs from early stopping
+    (default: '10')
+    (an integer)
+  --plateau_reduction: Multiplicative factor to apply to the current learning rate if a plateau has occurred.
+    (default: '0.1')
+    (a number)
+  --random_seed: default random seed that is used to initialize variables
+    (default: '4568')
+    (an integer)
+  --read_buffer: buffer-size for reading samples from datasets (supports file-size suffixes KB, MB, GB, TB)
+    (default: '1MB')
+  --[no]reduce_lr_on_plateau: Enable reducing the learning rate if a plateau is reached. This is the case if the validation loss did not improve for some epochs.
+    (default: 'false')
+  --relu_clip: ReLU clipping value for non-recurrent layers
+    (default: '20.0')
+    (a number)
+  --[no]remove_export: whether to remove old exported models
+    (default: 'false')
+  --report_count: number of phrases for each of best WER, median WER and worst WER to print out during a WER report
+    (default: '5')
+    (an integer)
+  --[no]reverse_dev: if to reverse sample order of the dev set
+    (default: 'false')
+  --[no]reverse_test: if to reverse sample order of the test set
+    (default: 'false')
+  --[no]reverse_train: if to reverse sample order of the train set
+    (default: 'false')
+  --save_checkpoint_dir: directory to which checkpoints are saved - defaults to directory "deepspeech/checkpoints" within user's data home specified by the XDG Base Directory Specification
+    (default: '')
+  --scorer: Alias for --scorer_path.
+    (default: '')
+  --scorer_path: path to the external scorer file.
+    (default: '')
+  --[no]show_progressbar: Show progress for training, validation and testing processes. Log level should be > 0.
+    (default: 'true')
+  --summary_dir: target directory for TensorBoard summaries - defaults to directory "deepspeech/summaries" within user's data home specified by the XDG Base Directory Specification
+    (default: '')
+  --test_batch_size: number of elements in a test batch
+    (default: '1')
+    (an integer)
+  --test_files: comma separated list of files specifying the datasets used for testing. Multiple files will get reported separately. If empty, the model will not be tested.
+    (default: '')
+  --test_output_file: path to a file to save all src/decoded/distance/loss tuples generated during a test epoch
+    (default: '')
+  --train_batch_size: number of elements in a training batch
+    (default: '1')
+    (an integer)
+  --[no]train_cudnn: use CuDNN RNN backend for training on GPU. Note that checkpoints created with this flag can only be used with CuDNN RNN, i.e. fine tuning on a CPU device will not work
+    (default: 'false')
+  --train_files: comma separated list of files specifying the dataset used for training. Multiple files will get merged. If empty, training will not be run.
+    (default: '')
+  --[no]use_allow_growth: use Allow Growth flag which will allocate only required amount of GPU memory and prevent full allocation of available GPU memory
+    (default: 'false')
+
+tensorflow.python.ops.parallel_for.pfor:
+  --[no]op_conversion_fallback_to_while_loop: If true, falls back to using a while loop for ops for which a converter is not defined.
+    (default: 'false')
+
+absl.flags:
+  --flagfile: Insert flag definitions from the given file into the command line.
+    (default: '')
+  --undefok: comma-separated list of flag names that it is okay to specify on the command line even if the program does not define a flag with that name.  IMPORTANT: flags in this list that have arguments
+    MUST use the --flag=value format.
+    (default: '')
+

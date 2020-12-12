@@ -1,4 +1,4 @@
-export TF_FORCE_GPU_ALLOW_GROWTH=true
+export TF_CUDNN_RESET_RND_GEN_STATE=1
 
 python -u DeepSpeech.py \
    --n_hidden 2048 \
@@ -12,7 +12,8 @@ python -u DeepSpeech.py \
    --test_batch_size 24 \
    --dropout_rate 0.05 \
    --learning_rate 0.0001 \
-   --train_cudnn true
+   --train_cudnn true \
+   --use_allow_growth true
 
 #   --lm_alpha 0.75 \
 #   --lm_beta 1.85 \

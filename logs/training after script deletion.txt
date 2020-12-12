@@ -1,0 +1,145 @@
+~/DeepSpeechCommander/src/scripts/run_training_voxforge.sh 
+I Loading best validating checkpoint from /home/necro/DeepSpeechCommander/checkpoints/best_dev-1753488
+I Loading variable from checkpoint: beta1_power
+I Loading variable from checkpoint: beta2_power
+I Loading variable from checkpoint: cudnn_lstm/opaque_kernel
+I Loading variable from checkpoint: cudnn_lstm/opaque_kernel/Adam
+I Loading variable from checkpoint: cudnn_lstm/opaque_kernel/Adam_1
+I Loading variable from checkpoint: global_step
+I Loading variable from checkpoint: layer_1/bias
+I Loading variable from checkpoint: layer_1/bias/Adam
+I Loading variable from checkpoint: layer_1/bias/Adam_1
+I Loading variable from checkpoint: layer_1/weights
+I Loading variable from checkpoint: layer_1/weights/Adam
+I Loading variable from checkpoint: layer_1/weights/Adam_1
+I Loading variable from checkpoint: layer_2/bias
+I Loading variable from checkpoint: layer_2/bias/Adam
+I Loading variable from checkpoint: layer_2/bias/Adam_1
+I Loading variable from checkpoint: layer_2/weights
+I Loading variable from checkpoint: layer_2/weights/Adam
+I Loading variable from checkpoint: layer_2/weights/Adam_1
+I Loading variable from checkpoint: layer_3/bias
+I Loading variable from checkpoint: layer_3/bias/Adam
+I Loading variable from checkpoint: layer_3/bias/Adam_1
+I Loading variable from checkpoint: layer_3/weights
+I Loading variable from checkpoint: layer_3/weights/Adam
+I Loading variable from checkpoint: layer_3/weights/Adam_1
+I Loading variable from checkpoint: layer_5/bias
+I Loading variable from checkpoint: layer_5/bias/Adam
+I Loading variable from checkpoint: layer_5/bias/Adam_1
+I Loading variable from checkpoint: layer_5/weights
+I Loading variable from checkpoint: layer_5/weights/Adam
+I Loading variable from checkpoint: layer_5/weights/Adam_1
+I Loading variable from checkpoint: layer_6/bias
+I Loading variable from checkpoint: layer_6/bias/Adam
+I Loading variable from checkpoint: layer_6/bias/Adam_1
+I Loading variable from checkpoint: layer_6/weights
+I Loading variable from checkpoint: layer_6/weights/Adam
+I Loading variable from checkpoint: layer_6/weights/Adam_1
+I Loading variable from checkpoint: learning_rate
+I STARTING Optimization
+Epoch 0 |   Training | Elapsed Time: 0:45:29 | Steps: 3533 | Loss: 5.108418                                                                                                                                
+Epoch 0 | Validation | Elapsed Time: 0:00:10 | Steps: 31 | Loss: 12.342188 | Dataset: /home/necro/datasets/voxforge/voxforge-dev.csv                                                                       
+I Saved new best validating model with loss 12.342188 to: /home/necro/DeepSpeechCommander/checkpoints/best_dev-1757021
+--------------------------------------------------------------------------------
+I FINISHED optimization in 0:45:42.668012
+I Loading best validating checkpoint from /home/necro/DeepSpeechCommander/checkpoints/best_dev-1757021
+I Loading variable from checkpoint: cudnn_lstm/rnn/multi_rnn_cell/cell_0/cudnn_compatible_lstm_cell/bias
+I Loading variable from checkpoint: cudnn_lstm/rnn/multi_rnn_cell/cell_0/cudnn_compatible_lstm_cell/kernel
+I Loading variable from checkpoint: global_step
+I Loading variable from checkpoint: layer_1/bias
+I Loading variable from checkpoint: layer_1/weights
+I Loading variable from checkpoint: layer_2/bias
+I Loading variable from checkpoint: layer_2/weights
+I Loading variable from checkpoint: layer_3/bias
+I Loading variable from checkpoint: layer_3/weights
+I Loading variable from checkpoint: layer_5/bias
+I Loading variable from checkpoint: layer_5/weights
+I Loading variable from checkpoint: layer_6/bias
+I Loading variable from checkpoint: layer_6/weights
+Testing model on /home/necro/datasets/voxforge/voxforge-test.csv
+Test epoch | Steps: 28 | Elapsed Time: 0:08:41                                                                                                                                                             
+Test on /home/necro/datasets/voxforge/voxforge-test.csv - WER: 0.189525, CER: 0.075805, loss: 14.444492
+--------------------------------------------------------------------------------
+Best WER: 
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 5.496830
+ - wav: file:///home/necro/datasets/voxforge/test/Vladimir-20150717-vai/wav/b0463.wav
+ - src: "take my advice and accept the vacation"
+ - res: "take my advice and accept the vacation"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 3.336843
+ - wav: file:///home/necro/datasets/voxforge/test/xh-20100802-qsv/wav/b0006.wav
+ - src: "he seized gregson by the arm and led him to the door"
+ - res: "he seized gregson by the arm and led him to the door"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 2.890479
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20131111-ygj/wav/b0079.wav
+ - src: "the truth of it set jeanne quivering"
+ - res: "the truth of it set jeanne quivering"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 2.771554
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20111230-ggt/wav/a0502.wav
+ - src: "anything unusual or abnormal was sufficient to send a fellow to molokai"
+ - res: "anything unusual or abnormal was sufficient to send a fellow to molokai"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 2.550662
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20140608-yby/wav/b0204.wav
+ - src: "down through the perfume weighted air fluttered the snowy fluffs of the cottonwoods"
+ - res: "down through the perfume weighted air fluttered the snowy fluffs of the cottonwoods"
+--------------------------------------------------------------------------------
+Median WER: 
+--------------------------------------------------------------------------------
+WER: 0.125000, CER: 0.105263, loss: 19.873964
+ - wav: file:///home/necro/datasets/voxforge/test/robin-20070326-vf14/wav/vf14-08.wav
+ - src: "men who endure it call it living death"
+ - res: "men who endure it go it living death"
+--------------------------------------------------------------------------------
+WER: 0.125000, CER: 0.078947, loss: 19.280682
+ - wav: file:///home/necro/datasets/voxforge/test/Jennichan-20130921-vhe/wav/a0544.wav
+ - src: "he may anticipate the day of his death"
+ - res: "he may anticipate a day of his death"
+--------------------------------------------------------------------------------
+WER: 0.125000, CER: 0.086957, loss: 19.241318
+ - wav: file:///home/necro/datasets/voxforge/test/SamirBenAbid-20091104-ulq/wav/a0142.wav
+ - src: "such things had occurred before he told philip"
+ - res: "such things had occurred before he tought philip"
+--------------------------------------------------------------------------------
+WER: 0.125000, CER: 0.125000, loss: 18.659824
+ - wav: file:///home/necro/datasets/voxforge/test/Andrew-20120826-wzg/wav/a0352.wav
+ - src: "i'm sure going along with you all elijah"
+ - res: "i'm sure going along with you all eevor"
+--------------------------------------------------------------------------------
+WER: 0.125000, CER: 0.021277, loss: 4.516144
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20080914-gsb/wav/a0438.wav
+ - src: "at sea monday march sixteenth nineteen oh eight"
+ - res: "at see monday march sixteenth nineteen oh eight"
+--------------------------------------------------------------------------------
+Worst WER: 
+--------------------------------------------------------------------------------
+WER: 0.916667, CER: 0.397059, loss: 117.990356
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20120704-odg/wav/b0190.wav
+ - src: "idealism led him to philosophic anarchy and his family threw him off"
+ - res: "idear is a led him to e fers up again again and e sfamily dew him off"
+--------------------------------------------------------------------------------
+WER: 1.000000, CER: 0.666667, loss: 93.276337
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20150417-qko/wav/a0551.wav
+ - src: "all an appearance can know is mirage"
+ - res: "on heres he as moge"
+--------------------------------------------------------------------------------
+WER: 1.000000, CER: 0.481481, loss: 84.922409
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20150417-qko/wav/a0547.wav
+ - src: "men like joe goose dated existence from drunk to drunk"
+ - res: "menwi joges date asistes for ron te bo"
+--------------------------------------------------------------------------------
+WER: 1.000000, CER: 0.418605, loss: 67.490463
+ - wav: file:///home/necro/datasets/voxforge/test/xh-20100802-qsv/wav/a0592.wav
+ - src: "it's only his indigestion i find fault with"
+ - res: "it onli is in the gestin of anfolt with"
+--------------------------------------------------------------------------------
+WER: 1.090909, CER: 0.528571, loss: 150.918213
+ - wav: file:///home/necro/datasets/voxforge/test/anonymous-20150417-qko/wav/a0543.wav
+ - src: "i had been born with no organic chemical predisposition toward alcohol"
+ - res: "a he gon bory wor in fom cosfili ti podision to alcobol"
+--------------------------------------------------------------------------------
+
