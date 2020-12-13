@@ -1,0 +1,157 @@
+~/DeepSpeechCommander/src/scripts/run_training_commonVoice.sh 
+I Loading best validating checkpoint from /home/necro/DeepSpeechCommander/checkpoints/best_dev-1757021
+I Loading variable from checkpoint: beta1_power
+I Loading variable from checkpoint: beta2_power
+I Loading variable from checkpoint: cudnn_lstm/opaque_kernel
+I Loading variable from checkpoint: cudnn_lstm/opaque_kernel/Adam
+I Loading variable from checkpoint: cudnn_lstm/opaque_kernel/Adam_1
+I Loading variable from checkpoint: global_step
+I Loading variable from checkpoint: layer_1/bias
+I Loading variable from checkpoint: layer_1/bias/Adam
+I Loading variable from checkpoint: layer_1/bias/Adam_1
+I Loading variable from checkpoint: layer_1/weights
+I Loading variable from checkpoint: layer_1/weights/Adam
+I Loading variable from checkpoint: layer_1/weights/Adam_1
+I Loading variable from checkpoint: layer_2/bias
+I Loading variable from checkpoint: layer_2/bias/Adam
+I Loading variable from checkpoint: layer_2/bias/Adam_1
+I Loading variable from checkpoint: layer_2/weights
+I Loading variable from checkpoint: layer_2/weights/Adam
+I Loading variable from checkpoint: layer_2/weights/Adam_1
+I Loading variable from checkpoint: layer_3/bias
+I Loading variable from checkpoint: layer_3/bias/Adam
+I Loading variable from checkpoint: layer_3/bias/Adam_1
+I Loading variable from checkpoint: layer_3/weights
+I Loading variable from checkpoint: layer_3/weights/Adam
+I Loading variable from checkpoint: layer_3/weights/Adam_1
+I Loading variable from checkpoint: layer_5/bias
+I Loading variable from checkpoint: layer_5/bias/Adam
+I Loading variable from checkpoint: layer_5/bias/Adam_1
+I Loading variable from checkpoint: layer_5/weights
+I Loading variable from checkpoint: layer_5/weights/Adam
+I Loading variable from checkpoint: layer_5/weights/Adam_1
+I Loading variable from checkpoint: layer_6/bias
+I Loading variable from checkpoint: layer_6/bias/Adam
+I Loading variable from checkpoint: layer_6/bias/Adam_1
+I Loading variable from checkpoint: layer_6/weights
+I Loading variable from checkpoint: layer_6/weights/Adam
+I Loading variable from checkpoint: layer_6/weights/Adam_1
+I Loading variable from checkpoint: learning_rate
+I STARTING Optimization
+Epoch 0 |   Training | Elapsed Time: 4:50:26 | Steps: 21534 | Loss: 29.034475                                                                                                                              
+Epoch 0 | Validation | Elapsed Time: 0:04:43 | Steps: 784 | Loss: 38.089087 | Dataset: /media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/dev.csv                                         
+I Saved new best validating model with loss 38.089087 to: /home/necro/DeepSpeechCommander/checkpoints/best_dev-1778555
+--------------------------------------------------------------------------------
+Epoch 1 |   Training | Elapsed Time: 4:50:55 | Steps: 21534 | Loss: 27.018417                                                                                                                              
+Epoch 1 | Validation | Elapsed Time: 0:04:43 | Steps: 784 | Loss: 36.881044 | Dataset: /media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/dev.csv                                         
+I Saved new best validating model with loss 36.881044 to: /home/necro/DeepSpeechCommander/checkpoints/best_dev-1800089
+--------------------------------------------------------------------------------
+Epoch 2 |   Training | Elapsed Time: 4:50:46 | Steps: 21534 | Loss: 25.962985                                                                                                                              
+Epoch 2 | Validation | Elapsed Time: 0:04:44 | Steps: 784 | Loss: 36.442300 | Dataset: /media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/dev.csv                                         
+I Saved new best validating model with loss 36.442300 to: /home/necro/DeepSpeechCommander/checkpoints/best_dev-1821623
+--------------------------------------------------------------------------------
+Epoch 3 |   Training | Elapsed Time: 4:53:34 | Steps: 21534 | Loss: 25.203365                                                                                                                              
+Epoch 3 | Validation | Elapsed Time: 0:04:43 | Steps: 784 | Loss: 36.037785 | Dataset: /media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/dev.csv                                         
+I Saved new best validating model with loss 36.037785 to: /home/necro/DeepSpeechCommander/checkpoints/best_dev-1843157
+--------------------------------------------------------------------------------
+I FINISHED optimization in 19:44:43.014918
+I Loading best validating checkpoint from /home/necro/DeepSpeechCommander/checkpoints/best_dev-1843157
+I Loading variable from checkpoint: cudnn_lstm/rnn/multi_rnn_cell/cell_0/cudnn_compatible_lstm_cell/bias
+I Loading variable from checkpoint: cudnn_lstm/rnn/multi_rnn_cell/cell_0/cudnn_compatible_lstm_cell/kernel
+I Loading variable from checkpoint: global_step
+I Loading variable from checkpoint: layer_1/bias
+I Loading variable from checkpoint: layer_1/weights
+I Loading variable from checkpoint: layer_2/bias
+I Loading variable from checkpoint: layer_2/weights
+I Loading variable from checkpoint: layer_3/bias
+I Loading variable from checkpoint: layer_3/weights
+I Loading variable from checkpoint: layer_5/bias
+I Loading variable from checkpoint: layer_5/weights
+I Loading variable from checkpoint: layer_6/bias
+I Loading variable from checkpoint: layer_6/weights
+Testing model on /media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/test.csv
+Test epoch | Steps: 778 | Elapsed Time: 3:17:15                                                                                                                                                            
+Test on /media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/test.csv - WER: 0.525546, CER: 0.232351, loss: 40.697575
+--------------------------------------------------------------------------------
+Best WER: 
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.037037, loss: 11.530557
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_17821885.wav
+ - src: "another pot  try the teapot"
+ - res: "another pot try the teapot"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 9.148293
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_19958781.wav
+ - src: "lake retreat camp is part of converge northwest swedish baptist church"
+ - res: "lake retreat camp is part of converge northwest swedish baptist church"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 9.065827
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_19104631.wav
+ - src: "we sang the narrative"
+ - res: "we sang the narrative"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 8.310882
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_22430781.wav
+ - src: "there is a strong undercurrent of romance which is not resolved"
+ - res: "there is a strong undercurrent of romance which is not resolved"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 8.052864
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_17281502.wav
+ - src: "i'll take a glance if you like"
+ - res: "i'll take a glance if you like"
+--------------------------------------------------------------------------------
+Median WER: 
+--------------------------------------------------------------------------------
+WER: 0.538462, CER: 0.185567, loss: 64.621468
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_18800349.wav
+ - src: "it also demanded guarantees for unlimited safeguards to protect the minority protestant community"
+ - res: "it also remanded the ritis for alieted simguards to protect the minorty protestent community"
+--------------------------------------------------------------------------------
+WER: 0.538462, CER: 0.243590, loss: 63.798473
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_19995616.wav
+ - src: "f mount lenses also typically have aperture rings that turn clockwise to close"
+ - res: "af mountlinc is also typically have a purchuring that turn clockwise the clothes"
+--------------------------------------------------------------------------------
+WER: 0.538462, CER: 0.246377, loss: 62.899338
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_17283104.wav
+ - src: "what would you say is the difference between a language and a dialect"
+ - res: "one oriosay is the difference wetween a language and adadact"
+--------------------------------------------------------------------------------
+WER: 0.538462, CER: 0.243902, loss: 62.335377
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_19739904.wav
+ - src: "they had two children michael s pease the geneticist and nicholas arthington pease"
+ - res: "they had two children mical his bis fedelitisis and nicholas artington pis"
+--------------------------------------------------------------------------------
+WER: 0.538462, CER: 0.290323, loss: 61.866123
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_552170.wav
+ - src: "the brown dog is jumping a hurdle over a yellow and black pole"
+ - res: "the brown dog is jhamping a helde a varallo in blackbol"
+--------------------------------------------------------------------------------
+Worst WER: 
+--------------------------------------------------------------------------------
+WER: 2.000000, CER: 1.285714, loss: 44.373474
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_22074788.wav
+ - src: "firefox"
+ - res: "fire fox firefox"
+--------------------------------------------------------------------------------
+WER: 2.000000, CER: 2.000000, loss: 17.847418
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_22214552.wav
+ - src: "yes"
+ - res: "yets golo"
+--------------------------------------------------------------------------------
+WER: 2.000000, CER: 0.750000, loss: 7.041667
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_191353.wav
+ - src: "amen"
+ - res: "a manw"
+--------------------------------------------------------------------------------
+WER: 4.000000, CER: 4.000000, loss: 352.866821
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_17645060.wav
+ - src: "did you know that"
+ - res: "inti tuno that te dou know that ti dou know that the you know that thed you know that"
+--------------------------------------------------------------------------------
+WER: 6.000000, CER: 4.000000, loss: 165.458466
+ - wav: file:///media/necro/datasets/commonVoice/cv-corpus-5.1-2020-06-22/en/clips/common_voice_en_54384.wav
+ - src: "undefined"
+ - res: "etrything honors and e manisterami corners"
+--------------------------------------------------------------------------------
+
