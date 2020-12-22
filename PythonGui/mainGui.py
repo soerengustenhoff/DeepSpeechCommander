@@ -93,16 +93,46 @@ class TranscriptedWord:
     text = ""
 
 
+class InferedWord:
+    confidence = 0
+    text = ""
+
+
 def handleVoiceOperation(transcriptedWords=[], window=None):
     voiceCommands = ["command", "start", "stop", "recieve", "transmit", "line", "one", "two", "three", "four"]
 
-    for transcriptedWord in transcriptedWords:
-        if transcriptedWord.text in voiceCommands:
-            with lock:
-                window['-DEEPSPEECH-out-'].print("Recognized: %s with confidence %.3f \n \n \n" % (transcriptedWord.text, transcriptedWord.confidence))
+    inferedWord = InferedWord()
+    inferedWord.infered_str = ""
 
-            return transcriptedWord.text
-        return ""
+    for transcriptedWord in transcriptedWords:
+        checkTranscriptWord = transcriptedWord.text.split(' ')
+        for text in checkTranscriptWord:
+            if text in voiceCommands:
+#                with lock:
+#                    window['-DEEPSPEECH-out-'].print("Recognized: %s with confidence %.3f \n \n \n" % (transcriptedWord.text, transcriptedWord.confidence))
+                if inferedWord.infered_str == "":
+                    inferedWord.infered_str += text
+                elif inferedWord.infered_str == text:
+                    pass
+                else:
+                    inferedWord.infered_str += " " + text
+
+                if checkTranscriptWord and text == checkTranscriptWord[-1]:
+                    inferedWord.confidence = transcriptedWord.confidence
+                    with lock:
+                        window['-DEEPSPEECH-out-'].print(
+                            "Recognized: %s with confidence %.3f \n " % (
+                            inferedWord.infered_str, inferedWord.confidence))
+                    return inferedWord.infered_str
+            else:
+                inferedWord.infered_str = ""
+                inferedWord.confidence = 0
+                break
+
+#    with lock:
+#        window['-DEEPSPEECH-out-'].print("Did not understand your command, please try again \n ")
+
+    return inferedWord.infered_str
 
 
 def handleMetadata(text, window):
@@ -161,10 +191,7 @@ def runMicrophone(dataModel: deepSpeechModels.deepSpeechDataModel, window):
 def init():
     sg.theme('Dark Blue 3')  # please make your windows colorful
 
-    layout = [[sg.Text('Your typed chars appear here:'), sg.Text(size=(12, 1), key='-OUTPUT-')],
-              [sg.Input(key='-IN-')],
-              [sg.Button('Show'), sg.Button('Exit')],
-              [sg.T('Line 1'),
+    layout = [[sg.T('Line 1'),
                sg.Radio('Off', "RADIO1", default=True, key='RADIO1-Off'),
                sg.Radio('Tx', "RADIO1", key='RADIO1-tx'),
                sg.Radio('Tx/Rx', "RADIO1", key='RADIO1-rxtx')],
@@ -196,9 +223,6 @@ def init():
         print(event, values)
         if event == sg.WIN_CLOSED or event == 'Exit':
             break
-        if event == 'Show':
-            # change the "output" element to be the value of "input" element
-            window['-OUTPUT-'].update(values['-IN-'])
 
 
     window.close()
