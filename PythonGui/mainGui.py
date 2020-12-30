@@ -2,6 +2,7 @@ import PySimpleGUI as sg
 import os.path
 import deepSpeechHandler
 import deepSpeechModels
+import voiceOperationHelper
 
 import time
 import logging
@@ -22,6 +23,7 @@ import json
 import sys
 import subprocess
 import shlex
+import threading
 
 try:
     from shhlex import quote
@@ -29,63 +31,21 @@ except ImportError:
     from pipes import quote
 
 logging.basicConfig(level=20)
+lock = threading.Lock()
 
 
-
-def convert_samplerate(audio_path, desired_sample_rate):
-    sox_cmd = 'sox {} --type raw --bits 16 --channels 1 --rate {} --encoding signed-integer --endian little --compression 0.0 --no-dither - '.format(
-        quote(audio_path), desired_sample_rate)
-    try:
-        output = subprocess.check_output(shlex.split(sox_cmd), stderr=subprocess.PIPE)
-    except subprocess.CalledProcessError as e:
-        raise RuntimeError('SoX returned non-zero status: {}'.format(e.stderr))
-    except OSError as e:
-        raise OSError(e.errno,
-                      'SoX not found, use {}hz files or install it: {}'.format(desired_sample_rate, e.strerror))
-
-    return desired_sample_rate, np.frombuffer(output, np.int16)
-
-
-def words_from_candidate_transcript(metadata):
-    word = ""
-    word_list = []
-    word_start_time = 0
-    # Loop through each character
-    for i, token in enumerate(metadata.tokens):
-        # Append character to word if it's not a space
-        if token.text != " ":
-            if len(word) == 0:
-                # Log the start time of the new word
-                word_start_time = token.start_time
-
-            word = word + token.text
-        # Word boundary is either a space or the last character in the array
-        if token.text == " " or i == len(metadata.tokens) - 1:
-            word_duration = token.start_time - word_start_time
-
-            if word_duration < 0:
-                word_duration = 0
-
-            each_word = dict()
-            each_word["word"] = word
-            each_word["start_time"] = round(word_start_time, 4)
-            each_word["duration"] = round(word_duration, 4)
-
-            word_list.append(each_word)
-            # Reset
-            word = ""
-            word_start_time = 0
-
-    return word_list
-
-
-def metadata_json_output(metadata):
-    json_result = dict()
-    json_result["transcripts"] = [{
-        "confidence": transcript.confidence,
-        "words": words_from_candidate_transcript(transcript),
-    } for transcript in metadata.transcripts]
-    return json.dumps(json_result, indent=2)
+#def convert_samplerate(audio_path, desired_sample_rate):
+#    sox_cmd = 'sox {} --type raw --bits 16 --channels 1 --rate {} --encoding signed-integer --endian little --compression 0.0 --no-dither - '.format(
+#        quote(audio_path), desired_sample_rate)
+#    try:
+#        output = subprocess.check_output(shlex.split(sox_cmd), stderr=subprocess.PIPE)
+#    except subprocess.CalledProcessError as e:
+#        raise RuntimeError('SoX returned non-zero status: {}'.format(e.stderr))
+#    except OSError as e:
+#        raise OSError(e.errno,
+#                      'SoX not found, use {}hz files or install it: {}'.format(desired_sample_rate, e.strerror))
+#
+#    return desired_sample_rate, np.frombuffer(output, np.int16)
 
 
 class TranscriptedWord:
@@ -93,16 +53,30 @@ class TranscriptedWord:
     text = ""
 
 
-class InferedWord:
+class InferredWord:
     confidence = 0
     text = ""
 
 
-def handleVoiceOperation(transcriptedWords=[], window=None):
-    voiceCommands = ["command", "start", "stop", "recieve", "transmit", "line", "one", "two", "three", "four"]
+class InferredVoiceCommand:
+    line = ""
+    command = ""
+    linebuilder = ""
 
-    inferedWord = InferedWord()
-    inferedWord.infered_str = ""
+    def reset(self):
+        self.line = ""
+        self.command = ""
+        self.linebuilder = ""
+
+
+inferredVoiceCommand = InferredVoiceCommand()
+voiceCommands = ["command", "start", "stop", "cancel", "receive", "transmit", "line", "one", "two", "three", "four"]
+
+def DistinguishVoiceOperation(transcriptedWords, window):
+    #voiceCommands = ["command", "start", "stop", "cancel", "recieve", "transmit", "line", "one", "two", "three", "four"]
+
+    inferredWord = InferredWord()
+    inferredWord.inferred_str = ""
 
     for transcriptedWord in transcriptedWords:
         checkTranscriptWord = transcriptedWord.text.split(' ')
@@ -110,29 +84,88 @@ def handleVoiceOperation(transcriptedWords=[], window=None):
             if text in voiceCommands:
 #                with lock:
 #                    window['-DEEPSPEECH-out-'].print("Recognized: %s with confidence %.3f \n \n \n" % (transcriptedWord.text, transcriptedWord.confidence))
-                if inferedWord.infered_str == "":
-                    inferedWord.infered_str += text
-                elif inferedWord.infered_str == text:
+                if inferredWord.inferred_str == "":
+                    inferredWord.inferred_str += text
+                elif inferredWord.inferred_str == text:
                     pass
                 else:
-                    inferedWord.infered_str += " " + text
+                    inferredWord.inferred_str += " " + text
 
                 if checkTranscriptWord and text == checkTranscriptWord[-1]:
-                    inferedWord.confidence = transcriptedWord.confidence
+                    inferredWord.confidence = transcriptedWord.confidence
                     with lock:
                         window['-DEEPSPEECH-out-'].print(
                             "Recognized: %s with confidence %.3f \n " % (
-                            inferedWord.infered_str, inferedWord.confidence))
-                    return inferedWord.infered_str
+                                inferredWord.inferred_str, inferredWord.confidence))
+                    return inferredWord.inferred_str
             else:
-                inferedWord.infered_str = ""
-                inferedWord.confidence = 0
+                inferredWord.inferred_str = ""
+                inferredWord.confidence = 0
                 break
 
 #    with lock:
 #        window['-DEEPSPEECH-out-'].print("Did not understand your command, please try again \n ")
 
-    return inferedWord.infered_str
+    return inferredWord.inferred_str
+
+
+def handleVoiceOperation(text, window):
+    with lock:
+        if window['Command-None'].get():
+            voiceOperationHelper.commandStart(text, window, inferredVoiceCommand)
+        elif window['Command-Start'].get():
+            voiceOperationHelper.commandLine(text, window, inferredVoiceCommand)
+        elif window['Line'].get():
+            voiceOperationHelper.commandCommand(text, window, inferredVoiceCommand)
+        elif window['Command'].get() and text == "command stop":
+            voiceOperationHelper.commandStop(text, window, inferredVoiceCommand)
+        elif text == "command cancel":
+            voiceOperationHelper.commandCancel(text, window, inferredVoiceCommand)
+    return
+
+
+def handleVoiceOperationOld(text, window):
+    with lock:
+        if text == "command start" and window['Command-None'].get():
+            window['Command-Start'].Update(value=True)
+        elif text == "line one" \
+                or text == "line two" \
+                or text == "line three" \
+                or text == "line four" \
+                and window['Command-Start'].get():
+            window['Line'].Update(value=True)
+            inferredVoiceCommand.line = text
+        elif text == "transmit" \
+                or text == "receive"\
+                and window['Line'].get():
+            window['Command'].Update(value=True)
+            inferredVoiceCommand.command = text
+        elif text == "command stop" and window['Command'].get():
+            window['Command-Stop'].Update(value=True)
+            if inferredVoiceCommand.line == "line one":
+                if inferredVoiceCommand.command == "transmit":
+                    window['Line1-rx'].Update(value=True)
+                elif inferredVoiceCommand.command == "receive":
+                    window['Line1-rxtx'].Update(value=True)
+            elif inferredVoiceCommand.line == "line two":
+                if inferredVoiceCommand.command == "transmit":
+                    window['Line2-rx'].Update(value=True)
+                elif inferredVoiceCommand.command == "receive":
+                    window['Line2-rxtx'].Update(value=True)
+            elif inferredVoiceCommand.line == "line three":
+                if inferredVoiceCommand.command == "transmit":
+                    window['Line3-rx'].Update(value=True)
+                elif inferredVoiceCommand.command == "receive":
+                    window['Line3-rxtx'].Update(value=True)
+            elif inferredVoiceCommand.line == "line four":
+                if inferredVoiceCommand.command == "transmit":
+                    window['Line4-rx'].Update(value=True)
+                elif inferredVoiceCommand.command == "receive":
+                    window['Line4-rxtx'].Update(value=True)
+        elif text == "command cancel":
+            window['Command-None'].Update(value=True)
+            inferredVoiceCommand.reset()
+    return
 
 
 def handleMetadata(text, window):
@@ -146,11 +179,11 @@ def handleMetadata(text, window):
             transcriptedWord.text += token.text
         transcriptedWords.append(transcriptedWord)
 
-    text = handleVoiceOperation(transcriptedWords, window=window)
+    text = DistinguishVoiceOperation(transcriptedWords, window=window)
+    handleVoiceOperation(text, window=window)
     return text
 
-import threading
-lock = threading.Lock()
+
 def runMicrophone(dataModel: deepSpeechModels.deepSpeechDataModel, window):
 
     dataModel.vad_audio = deepSpeechModels.VADAudio(aggressiveness=ARGS.vad_aggressiveness,
@@ -191,22 +224,28 @@ def runMicrophone(dataModel: deepSpeechModels.deepSpeechDataModel, window):
 def init():
     sg.theme('Dark Blue 3')  # please make your windows colorful
 
-    layout = [[sg.T('Line 1'),
-               sg.Radio('Off', "RADIO1", default=True, key='RADIO1-Off'),
-               sg.Radio('Tx', "RADIO1", key='RADIO1-tx'),
-               sg.Radio('Tx/Rx', "RADIO1", key='RADIO1-rxtx')],
+    layout = [[sg.T('Command progress'),
+               sg.Radio('No input', "RADIOCOMMAND", default=True, key='Command-None'),
+               sg.Radio('Start', "RADIOCOMMAND", key='Command-Start'),
+               sg.Radio('Line selected', "RADIOCOMMAND", key='Line'),
+               sg.Radio('Command', "RADIOCOMMAND", key='Command'),
+               sg.Radio('Stop', "RADIOCOMMAND", key='Command-Stop')],
+              [sg.T('Line 1'),
+               sg.Radio('Off', "Line1", default=True, key='Line1-Off'),
+               sg.Radio('Tx', "Line1", key='Line1-rx'),
+               sg.Radio('Tx/Rx', "Line1", key='Line1-rxtx')],
               [sg.T('Line 2'),
-               sg.Radio('Off', "RADIO2", default=True, key='RADIO2-Off'),
-               sg.Radio('Tx', "RADIO2", key='RADIO2-tx'),
-               sg.Radio('Tx/Rx', "RADIO2", key='RADIO2-rxtx')],
+               sg.Radio('Off', "Line2", default=True, key='Line2-Off'),
+               sg.Radio('Tx', "Line2", key='Line2-rx'),
+               sg.Radio('Tx/Rx', "Line2", key='Line2-rxtx')],
               [sg.T('Line 3'),
-               sg.Radio('Off', "RADIO3", default=True, key='RADIO3-Off'),
-               sg.Radio('Tx', "RADIO3", key='RADIO3-tx'),
-               sg.Radio('Tx/Rx', "RADIO3", key='RADIO3-rxtx')],
+               sg.Radio('Off', "Line3", default=True, key='Line3-Off'),
+               sg.Radio('Tx', "Line3", key='Line3-rx'),
+               sg.Radio('Tx/Rx', "Line3", key='Line3-rxtx')],
               [sg.T('Line 4'),
-               sg.Radio('Off', "RADIO4", default=True, key='RADIO4-Off'),
-               sg.Radio('Tx', "RADIO4", key='RADIO4-tx'),
-               sg.Radio('Tx/Rx', "RADIO4", key='RADIO4-rxtx')],
+               sg.Radio('Off', "Line4", default=True, key='Line4-Off'),
+               sg.Radio('Tx', "Line4", key='Line4-rx'),
+               sg.Radio('Tx/Rx', "Line4", key='Line4-rxtx')],
               [sg.Multiline('Welcome\n', autoscroll=True, size=(100, 20), key='-DEEPSPEECH-out-')]
               ]
 
@@ -222,8 +261,8 @@ def init():
         event, values = window.read()
         print(event, values)
         if event == sg.WIN_CLOSED or event == 'Exit':
-            break
 
+            break
 
     window.close()
 
