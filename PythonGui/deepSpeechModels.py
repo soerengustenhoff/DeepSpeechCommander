@@ -98,6 +98,7 @@ class Audio(object):
         wf.writeframes(data)
         wf.close()
 
+
 class VADAudio(Audio):
     """Filter & segment audio with voice activity detection."""
 
@@ -151,7 +152,7 @@ class VADAudio(Audio):
                     ring_buffer.clear()
 
 
-class deepSpeechDataModel:
+class DeepSpeechDataModel:
     model: deepspeech.Model
     vad_audio: VADAudio
 

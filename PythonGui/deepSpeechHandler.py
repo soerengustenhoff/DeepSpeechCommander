@@ -4,7 +4,7 @@ import os
 import deepSpeechModels
 
 
-def init(args, dataModel: deepSpeechModels.deepSpeechDataModel):
+def init(args, data_model: deepSpeechModels.DeepSpeechDataModel):
     # Load DeepSpeech model
     if os.path.isdir(args.model):
         model_dir = args.model
@@ -18,5 +18,5 @@ def init(args, dataModel: deepSpeechModels.deepSpeechDataModel):
         logging.info("ARGS.scorer: %s", args.scorer)
         model.enableExternalScorer(args.scorer)
 
-    dataModel.model = model
-    return dataModel
+    data_model.model = model
+    return data_model

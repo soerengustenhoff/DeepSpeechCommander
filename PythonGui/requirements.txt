@@ -53,3 +53,6 @@ webrtcvad==2.0.10
 Werkzeug==1.0.1
 wrapt==1.12.1
 zipp==3.4.0
+
+PyAudio~=0.2.11
+PySimpleGUI~=4.32.1
